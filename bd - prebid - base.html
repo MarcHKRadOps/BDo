@@ -1,0 +1,247 @@
+<html>
+    <head>
+        <script async src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+        <script async src=''></script> //link to uploaded prebid.js file here
+        <script>
+            var PREBID_TIMEOUT = 1000;
+            var FAILSAFE_TIMEOUT = 3000;
+            var adUnits = [
+            {
+                code:'/1103428/header',
+                mediaTypes: {
+                    banner: {sizes: [[728,90], [468,60], [320,50]]}
+                },
+                bids: [
+                    {bidder:'sovrn',params:{tagid:'642005'},labelAny: ['mHeader']},
+                    {bidder:'sovrn',params:{tagid:'642007'},labelAny: ['dHeader']},
+                    {bidder:'emx_digital',params: {tagid:'81896'},labelAny: ['mHeader']},
+                    {bidder:'emx_digital',params: {tagid:'81897'},labelAny: ['dHeader']},
+                    {bidder:'aardvark',params: {ai:'NRPK',sc:'bLPL'},labelAny: ['mHeader']},
+                    {bidder:'aardvark',params: {ai:'NRPK',sc:'dtEB'},labelAny: ['dHeader']},
+                ]
+            },
+            {
+                code:'/1103428/belowNav',
+                mediaTypes: {
+                    banner: {sizes: [[970,250],[970,90],[728,90], [468,60], [320,50]]}
+                },
+                bids: [
+                    {bidder:'sovrn',params:{tagid:'642008'},labelAny: ['mLeader']},
+                    {bidder:'sovrn',params:{tagid:'642009'},labelAny: ['dLeader','tLeader']},
+                    {bidder:'sovrn',params:{tagid:'642010'},labelAny: ['dLeader']},
+                    {bidder:'sovrn',params:{tagid:'642011'},labelAny: ['dLeader']},
+                    {bidder:'emx_digital',params: {tagid:'81898'},labelAny: ['mLeader']},
+                    {bidder:'emx_digital',params: {tagid:'81899'},labelAny: ['dLeader']},
+                    {bidder:'emx_digital',params: {tagid:'81900'},labelAny: ['dLeader']},
+                    {bidder:'emx_digital',params: {tagid:'80901'},labelAny: ['dLeader']},
+                    {bidder:'aardvark',params: {ai:'NRPK',sc:'QTWr'},labelAny: ['mLeader']},
+                    {bidder:'aardvark',params: {ai:'NRPK',sc:'d0id'},labelAny: ['dLeader']},
+                    {bidder:'aardvark',params: {ai:'NRPK',sc:'IeIr'},labelAny: ['dLeader']},
+                    {bidder:'aardvark',params: {ai:'NRPK',sc:'8ofz'},labelAny: ['dLeader']},
+                ]
+            },
+            {
+                code:'/1103428/sbr1',
+                mediaTypes: {
+                    banner: {sizes: [[300,600], [300,250], [320,50]]}
+                },
+                bids: [
+                    {bidder:'sovrn',params:{tagid:'642012'},labelAny: ['dRect']},
+                    {bidder:'sovrn',params:{tagid:'642013'},labelAny: ['mRect','dRect']},
+                    {bidder:'emx_digital',params: {tagid:'81902'},labelAny: ['mRect','dRect']},
+                    {bidder:'emx_digital',params: {tagid:'81903'},labelAny: ['dRect']},
+                    {bidder:'aardvark',params: {ai:'NRPK',sc:'xGD0'},labelAny: ['mRect','dRect']},
+                    {bidder:'aardvark',params: {ai:'NRPK',sc:'Lzvt'},labelAny: ['dRect']},
+                ]
+            },
+            {
+                code:'/1103428/sbr2',
+                mediaTypes: {
+                    banner: {sizes: [[300,600], [300,250], [320,50]]}
+                },
+                bids: [
+                    {bidder:'sovrn',params:{tagid:'642014'},labelAny: ['dRect']},
+                    {bidder:'sovrn',params:{tagid:'642015'},labelAny: ['mRect','dRect']},
+                    {bidder:'emx_digital',params: {tagid:'81904'},labelAny: ['mRect','dRect']},
+                    {bidder:'emx_digital',params: {tagid:'81905'},labelAny: ['dRect']},
+                    {bidder:'aardvark',params: {ai:'NRPK',sc:'EK5U'},labelAny: ['mRect','dRect']},
+                    {bidder:'aardvark',params: {ai:'NRPK',sc:'7Ojs'},labelAny: ['dRect']},
+                ]
+            },
+            {
+                code:'/1103428/footer',
+                mediaTypes: {
+                    banner: {sizes: [[970,250],[970,90],[728,90], [468,60], [320,50]]}
+                },
+                bids: [
+                    {bidder:'sovrn',params:{tagid:'642020'},labelAny: ['mLeader']},
+                    {bidder:'sovrn',params:{tagid:'642021'},labelAny: ['tLeader','dLeader']},
+                    {bidder:'sovrn',params:{tagid:'642022'},labelAny: ['dLeader']},
+                    {bidder:'emx_digital',params: {tagid:'81913'},labelAny: ['mLeader']},
+                    {bidder:'emx_digital',params: {tagid:'81915'},labelAny: ['dLeader']},
+                    {bidder:'emx_digital',params: {tagid:'81917'},labelAny: ['dLeader']},
+                    {bidder:'aardvark',params: {ai:'NRPK',sc:'uym5'},labelAny: ['mLeader']},
+                    {bidder:'aardvark',params: {ai:'NRPK',sc:'8ph0'},labelAny: ['dLeader']},
+                    {bidder:'aardvark',params: {ai:'NRPK',sc:'5MJl'},labelAny: ['dLeader']},
+                ]
+            }
+
+        ];
+
+            const customPriceMap = {
+                'buckets' : [
+                	{'min' : 0,'max' : 5,'increment' : 0.01 },
+                	{'min' : 5,'max' : 10,'increment' : 0.05},
+                	{'min' : 10,'max' : 20,'increment' : 0.1},
+                	{'min' : 20,'max' : 50,'increment' : 0.5},
+                	{'min' : 50,'max' : 99,'increment' : 1.0}
+                ]
+            };
+
+            var googletag = googletag || {};
+            googletag.cmd = googletag.cmd || [];
+            googletag.cmd.push(function() {
+            	googletag.pubads().disableInitialLoad();
+            });
+
+            var pbjs = pbjs || {};
+            pbjs.que = pbjs.que || [];
+
+            pbjs.que.push(function() {
+            	pbjs.addAdUnits(adUnits);
+                pbjs.setConfig({
+                    priceGranularity: customPriceMap,
+                    sizeConfig: [
+                    	{mediaQuery:'(min-width: 1101px)', sizesSupported: [[728,90]], labels: ['dHeader']},
+                        {mediaQuery:'(min-width: 769px) and (max-width: 1100px)', sizesSupported: [[428,60],[320,50]], labels: ['mHeader']},
+                        {mediaQuery:'(min-width: 1101px)',sizesSupported: [[970,250],[970,90],[728,90]],labels: ['dLeader']},
+                        {mediaQuery:'(min-width: 769px) and (max-width: 1100px)',sizesSupported: [[728,90]],labels: ['tLeader']},
+                        {mediaQuery:'(min-width: 0px) and (max-width: 768px)',sizesSupported: [[300, 250],[320,50],[320,100]],labels: ['mLeader']},
+                        {mediaQuery:'(min-width: 768px)',sizesSupported: [[300,600],[300,250]],labels: ['dRect']},
+                    	{mediaQuery:'(min-width: 0px) and (max-width: 767px)',sizesSupported: [[300,250],[320,50],[320,100]],labels: ['mRect']}
+                    ]
+                });
+                pbjs.enableAnalytics({provider:'roxot',options: {publisherId:'ead42e08-024c-42f0-8120-6a39a7aecc78'}});
+                pbjs.requestBids({
+                    bidsBackHandler: initAdserver,
+                    timeout: PREBID_TIMEOUT
+                });
+            });
+
+            function initAdserver() {
+                if (pbjs.initAdserverSet) return;
+                pbjs.initAdserverSet = true;
+                googletag.cmd.push(function() {
+                    pbjs.setTargetingForGPTAsync && pbjs.setTargetingForGPTAsync();
+                    googletag.pubads().refresh();
+                });
+            }
+            
+            setTimeout(function() {
+                initAdserver();
+            }, FAILSAFE_TIMEOUT);
+
+            googletag.cmd.push(function() {
+                var mapHead = googletag.sizeMapping().
+                    addSize([0, 0], []).
+                    addSize([768, 0], [[428,60],[320,50]]).
+                    addSize([1100, 0], [728,90]).
+                    build();
+                var mapLeader = googletag.sizeMapping().
+                    addSize([0, 0], [[300, 250],[320,50],[320,100]]).
+                    addSize([768, 0], [728,90]).
+                    addSize([1100, 0], [[970,250],[970,90],[728,90]]).
+                    build();
+                var mapRect = googletag.sizeMapping().
+                    addSize([0, 0], [[300,250],[320,50],[320,100]]).
+                    addSize([768, 0], [[300,600],[300,250]]).
+                    build();
+                googletag.defineSlot('/1103428/header', [728,90],'ad-header').defineSizeMapping(mapHead).addService(googletag.pubads());
+                googletag.defineSlot('/1103428/belowNav', [728,90],'ad-belowNav').defineSizeMapping(mapLeader).addService(googletag.pubads());
+                googletag.defineSlot('/1103428/sbr1', [300,250],'ad-sbr1').defineSizeMapping(mapRect).addService(googletag.pubads());
+                googletag.defineSlot('/1103428/sbr2', [300,250],'ad-sbr2').defineSizeMapping(mapRect).addService(googletag.pubads());
+                googletag.defineSlot('/1103428/footer', [728,90],'ad-footer').defineSizeMapping(mapLeader).addService(googletag.pubads());
+                googletag.defineSlot('/1103428/pixel1', [1,1],'ad-pixel1').addService(googletag.pubads());
+                googletag.defineSlot('/1103428/pixel2', [1,1],'ad-pixel2').addService(googletag.pubads());
+                googletag.defineSlot('/1103428/skin', [1400,800],'ad-skin').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                //googletag.pubads().collapseEmptyDivs(true);
+                googletag.pubads().setTargeting('page','');
+                googletag.pubads().setTargeting('category','');
+                googletag.pubads().setTargeting('section','');
+                googletag.pubads().setTargeting('tags','');
+                googletag.enableServices();
+            });
+
+        </script>
+
+    </head>
+
+    <body>
+        <h2>Ads test</h2>
+        <h5>advert</h5>
+        <div id='ad-header'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('ad-header');
+                });
+            </script>
+        </div>        
+        <h5>advert</h5>
+        <div id='ad-belowNav' style='padding: 20px 0px;'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('ad-belowNav');
+                });
+            </script>
+        </div>
+        <h5>advert</h5>
+        <div id='ad-sbr1'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('ad-sbr1');
+                });
+            </script>
+        </div>
+        <h5>advert</h5>
+        <div id='ad-sbr2'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('ad-sbr2');
+                });
+            </script>
+        </div>
+        <h5>advert</h5>
+        <div id='ad-footer'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('ad-footer');
+                });
+            </script>
+        </div>
+        <h5>advert</h5>
+        <div id='ad-pixel1'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('ad-pixel1');
+                });
+            </script>
+        </div>
+        <h5>advert</h5>
+        <div id='ad-pixel2'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('ad-pixel2');
+                });
+            </script>
+        </div>
+        <h5>skin</h5>
+        <div id='ad-skin'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('ad-skin');
+                });
+            </script>
+        </div>
+    </body>
+</html>
