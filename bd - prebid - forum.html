@@ -140,8 +140,13 @@
                 pbjs.setConfig({
                     priceGranularity: customPriceMap,
                     sizeConfig: [
-                    	{mediaQuery:'(min-width: 768px)', sizesSupported: [], labels: ['desktop']},
-                    	{mediaQuery:'(min-width: 0px) and (max-width: 767px)',sizesSupported: [],labels: ['mobile']}
+                        {mediaQuery:'(min-width: 1101px)', sizesSupported: [[728,90]], labels: ['dHeader']},
+                        {mediaQuery:'(min-width: 769px) and (max-width: 1100px)', sizesSupported: [[428,60],[320,50]], labels: ['mHeader']},
+                        {mediaQuery:'(min-width: 1101px)',sizesSupported: [[970,250],[970,90],[728,90]],labels: ['dLeader']},
+                        {mediaQuery:'(min-width: 769px) and (max-width: 1100px)',sizesSupported: [[728,90]],labels: ['tLeader']},
+                        {mediaQuery:'(min-width: 0px) and (max-width: 768px)',sizesSupported: [[300, 250],[320,50],[320,100]],labels: ['mLeader']},
+                        {mediaQuery:'(min-width: 768px)',sizesSupported: [[300,600],[300,250]],labels: ['dRect']},
+                        {mediaQuery:'(min-width: 0px) and (max-width: 767px)',sizesSupported: [[300,250],[320,50],[320,100]],labels: ['mRect']}
                     ]
                 });
                 pbjs.enableAnalytics({provider:'roxot',options: {publisherId:'ead42e08-024c-42f0-8120-6a39a7aecc78'}});
