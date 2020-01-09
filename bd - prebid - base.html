@@ -1,25 +1,11 @@
 <html>
     <head>
         <script async src='https://www.googletagservices.com/tag/js/gpt.js'></script>
-        <script async src=''></script> //link to uploaded prebid.js file here
+        <script async src=''></script> <!-- link to uploaded prebid.js file here -->
         <script>
             var PREBID_TIMEOUT = 1000;
             var FAILSAFE_TIMEOUT = 3000;
             var adUnits = [
-            {
-                code:'/1103428/header',
-                mediaTypes: {
-                    banner: {sizes: [[728,90], [468,60], [320,50]]}
-                },
-                bids: [
-                    {bidder:'sovrn',params:{tagid:'642005'},labelAny: ['mHeader']},
-                    {bidder:'sovrn',params:{tagid:'642007'},labelAny: ['dHeader']},
-                    {bidder:'emx_digital',params: {tagid:'81896'},labelAny: ['mHeader']},
-                    {bidder:'emx_digital',params: {tagid:'81897'},labelAny: ['dHeader']},
-                    {bidder:'aardvark',params: {ai:'NRPK',sc:'bLPL'},labelAny: ['mHeader']},
-                    {bidder:'aardvark',params: {ai:'NRPK',sc:'dtEB'},labelAny: ['dHeader']},
-                ]
-            },
             {
                 code:'/1103428/belowNav',
                 mediaTypes: {
@@ -112,16 +98,15 @@
                 pbjs.setConfig({
                     priceGranularity: customPriceMap,
                     sizeConfig: [
-                    	{mediaQuery:'(min-width: 1101px)', sizesSupported: [[728,90]], labels: ['dHeader']},
-                        {mediaQuery:'(min-width: 769px) and (max-width: 1100px)', sizesSupported: [[428,60],[320,50]], labels: ['mHeader']},
-                        {mediaQuery:'(min-width: 1101px)',sizesSupported: [[970,250],[970,90],[728,90]],labels: ['dLeader']},
-                        {mediaQuery:'(min-width: 769px) and (max-width: 1100px)',sizesSupported: [[728,90]],labels: ['tLeader']},
-                        {mediaQuery:'(min-width: 0px) and (max-width: 768px)',sizesSupported: [[300, 250],[320,50],[320,100]],labels: ['mLeader']},
-                        {mediaQuery:'(min-width: 768px)',sizesSupported: [[300,600],[300,250]],labels: ['dRect']},
-                    	{mediaQuery:'(min-width: 0px) and (max-width: 767px)',sizesSupported: [[300,250],[320,50],[320,100]],labels: ['mRect']}
+                        {mediaQuery:'(min-width: 1101px)', sizesSupported: [[970,250],[970,90],[728,90]], labels: ['dLeader']},
+                        {mediaQuery:'(min-width: 769px) and (max-width: 1100px)', sizesSupported: [[728,90]], labels: ['tLeader']},
+                        {mediaQuery:'(min-width: 0px) and (max-width: 768px)', sizesSupported: [[300, 250],[320,50],[320,100]], labels: ['mLeader']},
+                        {mediaQuery:'(min-width: 768px)', sizesSupported: [[300,600],[300,250]], labels: ['dRect']},
+                    	{mediaQuery:'(min-width: 0px) and (max-width: 767px)', sizesSupported: [[300,250],[320,50],[320,100]], labels: ['mRect']}
                     ]
                 });
-                pbjs.enableAnalytics({provider:'roxot',options: {publisherId:'ead42e08-024c-42f0-8120-6a39a7aecc78'}});
+                // pbjs.enableAnalytics({provider:'roxot', options: {publisherId:'ead42e08-024c-42f0-8120-6a39a7aecc78'}});
+                pbjs.enableAnalytics({provider:'roxot', options: {publisherIds:['ead42e08-024c-42f0-8120-6a39a7aecc78']}});
                 pbjs.requestBids({
                     bidsBackHandler: initAdserver,
                     timeout: PREBID_TIMEOUT
@@ -142,21 +127,15 @@
             }, FAILSAFE_TIMEOUT);
 
             googletag.cmd.push(function() {
-                var mapHead = googletag.sizeMapping().
-                    addSize([0, 0], []).
-                    addSize([768, 0], [[428,60],[320,50]]).
-                    addSize([1100, 0], [728,90]).
-                    build();
                 var mapLeader = googletag.sizeMapping().
                     addSize([0, 0], [[300, 250],[320,50],[320,100]]).
                     addSize([768, 0], [728,90]).
                     addSize([1100, 0], [[970,250],[970,90],[728,90]]).
                     build();
                 var mapRect = googletag.sizeMapping().
-                    addSize([0, 0], [[300,250],[320,50],[320,100]]).
-                    addSize([768, 0], [[300,600],[300,250]]).
+                    addSize([0, 0], []).
+                    addSize([899, 0], [[300,600],[300,250]]).
                     build();
-                googletag.defineSlot('/1103428/header', [728,90],'ad-header').defineSizeMapping(mapHead).addService(googletag.pubads());
                 googletag.defineSlot('/1103428/belowNav', [728,90],'ad-belowNav').defineSizeMapping(mapLeader).addService(googletag.pubads());
                 googletag.defineSlot('/1103428/sbr1', [300,250],'ad-sbr1').defineSizeMapping(mapRect).addService(googletag.pubads());
                 googletag.defineSlot('/1103428/sbr2', [300,250],'ad-sbr2').defineSizeMapping(mapRect).addService(googletag.pubads());
@@ -166,10 +145,11 @@
                 googletag.defineSlot('/1103428/skin', [1400,800],'ad-skin').addService(googletag.pubads());
                 googletag.pubads().enableSingleRequest();
                 //googletag.pubads().collapseEmptyDivs(true);
-                googletag.pubads().setTargeting('page','');
-                googletag.pubads().setTargeting('category','');
-                googletag.pubads().setTargeting('section','');
-                googletag.pubads().setTargeting('tags','');
+                var pathParts = window.location.pathname.substr(1).split('/');
+                googletag.pubads().setTargeting('page', pathParts[0] ? pathParts[0] : 'home');
+                googletag.pubads().setTargeting('category', pathParts[1] ? pathParts[1] : 'none');
+                googletag.pubads().setTargeting('section', pathParts[2] ? pathParts[2] : 'none');
+                googletag.pubads().setTargeting('tags', pathParts[3] ? pathParts[3] : 'none');
                 googletag.enableServices();
             });
 
@@ -179,14 +159,7 @@
 
     <body>
         <h2>Ads test</h2>
-        <h5>advert</h5>
-        <div id='ad-header'>
-            <script type='text/javascript'>
-                googletag.cmd.push(function() {
-                    googletag.display('ad-header');
-                });
-            </script>
-        </div>        
+       
         <h5>advert</h5>
         <div id='ad-belowNav' style='padding: 20px 0px;'>
             <script type='text/javascript'>
