@@ -124,6 +124,12 @@
             pbjs.que.push(function() {
             	pbjs.addAdUnits(adUnits);
                 pbjs.setConfig({
+                    userSync: {
+                        filterSettings: {
+                            all: {bidders: ['aardvark'],filter: 'include'}},
+                        syncsPerBidder: 3, 
+                        syncDelay: 6000, 
+                    },
                     priceGranularity: customPriceMap,
                     sizeConfig: [
                         {mediaQuery:'(min-width: 1101px)',sizesSupported: [[970,250],[970,90],[728,90]],labels: ['dLeader']},
