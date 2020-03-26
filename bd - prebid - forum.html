@@ -171,7 +171,7 @@
                     build();
                 var mapBody = googletag.sizeMapping().
                     addSize([0, 0], [[300,250],[320,50]]).
-                    addSize([728, 0], []).
+                    addSize([728, 0], [728,90]).
                     build();
                 googletag.defineSlot("/1103428/belowNav", [728,90],"ad-belowNav").defineSizeMapping(mapLeader).addService(googletag.pubads());
                 googletag.defineSlot("/1103428/sbr1", [300,250],"ad-sbr1").defineSizeMapping(mapRect).addService(googletag.pubads());
@@ -187,7 +187,7 @@
                 googletag.defineSlot("/1103428/pixel1", [1,1],"ad-pixel1").addService(googletag.pubads());
                 googletag.defineSlot("/1103428/pixel2", [1,1],"ad-pixel2").addService(googletag.pubads());
                 googletag.defineSlot("/1103428/skin", [1400,800],"ad-skin").addService(googletag.pubads());
-                googletag.pubads().enableSingleRequest();
+                //googletag.pubads().enableSingleRequest();
                 //googletag.pubads().collapseEmptyDivs(true);
                 var pathParts = window.location.pathname.substr(1).split("/");
                 googletag.pubads().setTargeting("page", pathParts[0] ? pathParts[0] : "home");
