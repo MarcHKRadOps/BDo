@@ -194,6 +194,8 @@
                 googletag.pubads().setTargeting("category", pathParts[1] ? pathParts[1] : "none");
                 googletag.pubads().setTargeting("section", pathParts[2] ? pathParts[2] : "none");
                 googletag.pubads().setTargeting("tags", pathParts[3] ? pathParts[3] : "none");
+                var nodeId = document.getElementsByTagName("html")[0].getAttribute("data-container-key");
+                googletag.pubads().setTargeting("node", nodeId ? nodeId : "none");
                 googletag.enableServices();
             });
 
