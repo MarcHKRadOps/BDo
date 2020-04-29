@@ -24,6 +24,10 @@
                     {bidder:'aardvark',params: {ai:'NRPK',sc:'d0id'},labelAny: ['dLeader']},
                     {bidder:'aardvark',params: {ai:'NRPK',sc:'IeIr'},labelAny: ['dLeader']},
                     {bidder:'aardvark',params: {ai:'NRPK',sc:'8ofz'},labelAny: ['dLeader']},
+                    {bidder:"undertone",params: {publisherId: "3864",placementId:"3864002"},labelAny: ["mLeader"]},
+                    {bidder:"undertone",params: {publisherId: "3864",placementId:"3864003"},labelAny: ["tLeader","dLeader"]},
+                    {bidder:"undertone",params: {publisherId: "3864",placementId:"3864001"},labelAny: ["dLeader"]},
+                    {bidder:"oftmedia",params: {placementId:"19078638"}},
                 ]
             },
             {
@@ -38,6 +42,9 @@
                     {bidder:'emx_digital',params: {tagid:'81903'},labelAny: ['dRect']},
                     {bidder:'aardvark',params: {ai:'NRPK',sc:'xGD0'},labelAny: ['mRect','dRect']},
                     {bidder:'aardvark',params: {ai:'NRPK',sc:'Lzvt'},labelAny: ['dRect']},
+                    {bidder:"undertone",params: {publisherId: "3864",placementId:"3864002"},labelAny: ["mRect"]},
+                    {bidder:"undertone",params: {publisherId: "3864",placementId:"3864004"},labelAny: ["mRect","dRect"]},
+                    {bidder:"oftmedia",params: {placementId:"19078602"}},
                 ]
             },
             {
@@ -52,6 +59,9 @@
                     {bidder:'emx_digital',params: {tagid:'81905'},labelAny: ['dRect']},
                     {bidder:'aardvark',params: {ai:'NRPK',sc:'EK5U'},labelAny: ['mRect','dRect']},
                     {bidder:'aardvark',params: {ai:'NRPK',sc:'7Ojs'},labelAny: ['dRect']},
+                    {bidder:"undertone",params: {publisherId: "3864",placementId:"3864002"},labelAny: ["mRect"]},
+                    {bidder:"undertone",params: {publisherId: "3864",placementId:"3864004"},labelAny: ["mRect","dRect"]},
+                    {bidder:"oftmedia",params: {placementId:"19078641"}},
                 ]
             },
             {
@@ -69,6 +79,10 @@
                     {bidder:'aardvark',params: {ai:'NRPK',sc:'uym5'},labelAny: ['mLeader']},
                     {bidder:'aardvark',params: {ai:'NRPK',sc:'8ph0'},labelAny: ['dLeader']},
                     {bidder:'aardvark',params: {ai:'NRPK',sc:'5MJl'},labelAny: ['dLeader']},
+                    {bidder:"undertone",params: {publisherId: "3864",placementId:"3864002"},labelAny: ["mLeader"]},
+                    {bidder:"undertone",params: {publisherId: "3864",placementId:"3864003"},labelAny: ["tLeader","dLeader"]},
+                    {bidder:"undertone",params: {publisherId: "3864",placementId:"3864001"},labelAny: ["dLeader"]},
+                    {bidder:"oftmedia",params: {placementId:"19078644"}},
                 ]
             }
 
@@ -94,7 +108,7 @@
             pbjs.que = pbjs.que || [];
 
             pbjs.que.push(function() {
-            	pbjs.addAdUnits(adUnits);
+            pbjs.addAdUnits(adUnits);
                 pbjs.setConfig({
                     userSync: {
                         filterSettings: {
@@ -108,10 +122,9 @@
                         {mediaQuery:'(min-width: 769px) and (max-width: 1100px)', sizesSupported: [[728,90]], labels: ['tLeader']},
                         {mediaQuery:'(min-width: 0px) and (max-width: 768px)', sizesSupported: [[300, 250],[320,50],[320,100]], labels: ['mLeader']},
                         {mediaQuery:'(min-width: 768px)', sizesSupported: [[300,600],[300,250]], labels: ['dRect']},
-                    	{mediaQuery:'(min-width: 0px) and (max-width: 767px)', sizesSupported: [[300,250],[320,50],[320,100]], labels: ['mRect']}
+                        {mediaQuery:'(min-width: 0px) and (max-width: 767px)', sizesSupported: [[300,250],[320,50],[320,100]], labels: ['mRect']}
                     ]
                 });
-                // pbjs.enableAnalytics({provider:'roxot', options: {publisherId:'ead42e08-024c-42f0-8120-6a39a7aecc78'}});
                 pbjs.enableAnalytics({provider:'roxot', options: {publisherIds:['ead42e08-024c-42f0-8120-6a39a7aecc78']}});
                 pbjs.requestBids({
                     bidsBackHandler: initAdserver,
