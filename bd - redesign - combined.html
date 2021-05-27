@@ -1,13 +1,20 @@
 <html>
     <head>
         <script async src=""></script> <!-- link to uploaded prebid.js file here -->
+        <style>
+            #ad-footer {
+            z-index: 999;
+            position: sticky;
+            bottom: 0;
+        </style>
 		<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     	<script>
             var adUnits = [
             {
-                code:"/1103428/belowNav",
+                code:"/1103428/header",
                 mediaTypes: {
-                    banner: {sizes: [[970,250],[970,90],[728,90],[468,60],[320,50]]}
+                    banner: {sizes: [[728,90],[468,60],[300,250],[320,50]]} <!-- for WP only -->
+                    // banner: {sizes: [[970,250],[970,90],[728,90],[468,60],[300,250],[320,50]]} <!-- for forums only -->
                 },
                 bids: [
                     {bidder:"sovrn",params:{tagid:"642008"},labelAny: ["mLeader"]},
@@ -25,6 +32,7 @@
                     {bidder:"appnexus",params: {placementId:21533217}},
                 ]
             },
+            <!-- forums pages with right rail only -->
             {
                 code:"/1103428/sbr1",
                 mediaTypes: {
@@ -89,11 +97,11 @@
                     {bidder:"appnexus",params: {placementId:21533223}},
                 ]
             },
+            <!-- end forums pages with right rail only -->
             {
                 code:"/1103428/body1",
                 mediaTypes: {
                     banner: {sizes: [[728,90], [300,250], [320,50]]}
-                    // banner: {sizes: [[970,250],[970,90],[728,90], [300,250], [320,50]]}
                 },
                 bids: [
                     {bidder:"sovrn",params:{tagid:"716247"},labelAny: ["mBody"]},
@@ -112,7 +120,6 @@
                 code:"/1103428/body2",
                 mediaTypes: {
                     banner: {sizes: [[728,90], [300,250], [320,50]]}
-                    // banner: {sizes: [[970,250],[970,90],[728,90], [300,250], [320,50]]}
                 },
                 bids: [
                     {bidder:"sovrn",params:{tagid:"716249"},labelAny: ["mBody"]},
@@ -131,7 +138,6 @@
                 code:"/1103428/body3",
                 mediaTypes: {
                     banner: {sizes: [[728,90], [300,250], [320,50]]}
-                    // banner: {sizes: [[970,250],[970,90],[728,90], [300,250], [320,50]]}
                 },
                 bids: [
                     {bidder:"sovrn",params:{tagid:"716251"},labelAny: ["mBody"]},
@@ -150,7 +156,6 @@
                 code:"/1103428/body4",
                 mediaTypes: {
                     banner: {sizes: [[728,90], [300,250], [320,50]]}
-                    // banner: {sizes: [[970,250],[970,90],[728,90], [300,250], [320,50]]}
                 },
                 bids: [
                     {bidder:"sovrn",params:{tagid:"716253"},labelAny: ["mBody"]},
@@ -169,7 +174,6 @@
                 code:"/1103428/body5",
                 mediaTypes: {
                     banner: {sizes: [[728,90], [300,250], [320,50]]}
-                    // banner: {sizes: [[970,250],[970,90],[728,90], [300,250], [320,50]]}
                 },
                 bids: [
                     {bidder:"sovrn",params:{tagid:"716255"},labelAny: ["mBody"]},
@@ -187,18 +191,18 @@
             {
                 code:"/1103428/footer",
                 mediaTypes: {
-                    banner: {sizes: [[970,250],[970,90],[728,90],[468,60],[320,50]]}
+                    banner: {sizes: [[970,90],[728,90],[468,60],[320,50]]}
                 },
                 bids: [
-                    {bidder:"sovrn",params:{tagid:"642020"},labelAny: ["mLeader"]},
-                    {bidder:"sovrn",params:{tagid:"642021"},labelAny: ["tLeader","dLeader"]},
-                    {bidder:"sovrn",params:{tagid:"642022"},labelAny: ["dLeader"]},
-                    {bidder:"emx_digital",params: {tagid:"81913"},labelAny: ["mLeader"]},
-                    {bidder:"emx_digital",params: {tagid:"81915"},labelAny: ["dLeader"]},
-                    {bidder:"emx_digital",params: {tagid:"81917"},labelAny: ["dLeader"]},
-                    {bidder:"undertone",params: {publisherId: "3864",placementId:"3864002"},labelAny: ["mLeader"]},
-                    {bidder:"undertone",params: {publisherId: "3864",placementId:"3864003"},labelAny: ["tLeader","dLeader"]},
-                    {bidder:"undertone",params: {publisherId: "3864",placementId:"3864001"},labelAny: ["dLeader"]},
+                    {bidder:"sovrn",params:{tagid:"642020"},labelAny: ["mFooter"]},
+                    {bidder:"sovrn",params:{tagid:"642021"},labelAny: ["tFooter","dFooter"]},
+                    {bidder:"sovrn",params:{tagid:"642022"},labelAny: ["dFooter"]},
+                    {bidder:"emx_digital",params: {tagid:"81913"},labelAny: ["mFooter"]},
+                    {bidder:"emx_digital",params: {tagid:"81915"},labelAny: ["dFooter"]},
+                    {bidder:"emx_digital",params: {tagid:"81917"},labelAny: ["dFooter"]},
+                    {bidder:"undertone",params: {publisherId: "3864",placementId:"3864002"},labelAny: ["mFooter"]},
+                    {bidder:"undertone",params: {publisherId: "3864",placementId:"3864003"},labelAny: ["tFooter","dFooter"]},
+                    {bidder:"undertone",params: {publisherId: "3864",placementId:"3864001"},labelAny: ["dFooter"]},
                     {bidder:"oftmedia",params: {placementId:19078644}},
                     {bidder:"appnexus",params: {placementId:21533224}},
                 ]
@@ -235,12 +239,15 @@
                         syncDelay: 6000, 
                     },
                     sizeConfig: [
-                        {mediaQuery:"(min-width: 1101px)", sizesSupported: [[728,90]], labels: ["dLeader"]},
-                        // {mediaQuery:"(min-width: 1101px)", sizesSupported: [[970,250],[970,90],[728,90]], labels: ["dLeader"]},
+                        {mediaQuery:"(min-width: 1101px)", sizesSupported: [[728,90]], labels: ["dLeader"]},<!-- for WP side -->
+                        // {mediaQuery:"(min-width: 1101px)", sizesSupported: [[970,250],[970,90],[728,90]], labels: ["dLeader"]},<!-- for forum side -->
                         {mediaQuery:"(min-width: 769px) and (max-width: 1100px)", sizesSupported: [[728,90]], labels: ["tLeader"]},
                         {mediaQuery:"(min-width: 0px) and (max-width: 768px)", sizesSupported: [[300, 250],[320,50],[320,100]], labels: ["mLeader"]},
-                        {mediaQuery:"(min-width: 728px)", sizesSupported: [[300,250]], labels: ["dBody"]},
+                        {mediaQuery:"(min-width: 728px)", sizesSupported: [[728,90]], labels: ["dBody"]},
                         {mediaQuery:"(min-width: 0px) and (max-width: 727px)", sizesSupported: [[300,250]], labels: ["mBody"]},
+                        {mediaQuery:"(min-width: 1101px)", sizesSupported: [[970,90],[728,90]], labels: ["dFooter"]},
+                        {mediaQuery:"(min-width: 769px) and (max-width: 1100px)", sizesSupported: [[728,90]], labels: ["tFooter"]},
+                        {mediaQuery:"(min-width: 0px) and (max-width: 768px)", sizesSupported: [[320,50],[320,100]], labels: ["mFooter"]},
                     ],
                     priceGranularity: customPriceMap
                 });
@@ -268,7 +275,8 @@
                 var mapLeader = googletag.sizeMapping().
                     addSize([0, 0], [[300, 250],[320,50],[320,100]]).
                     addSize([768, 0], [728,90]).
-                    addSize([1100, 0], [[970,250],[970,90],[728,90]]).
+                    addSize([1100, 0], [[970,90],[728,90]]).<!-- for WP side -->
+                    //addSize([1100, 0], [[970,250],[970,90],[728,90]]).<!-- for forum side -->
                     build();
                 var mapRect = googletag.sizeMapping().
                     addSize([0, 0], []).
@@ -276,24 +284,23 @@
                     build();
                 var mapBody = googletag.sizeMapping().
                     addSize([0, 0], [[300,600],[300,250],[320,50],[320,100]]).
-                    addSize([768, 0], [[728,90]]).
-                    // addSize([768, 0], [[970,250],[970,90],[728,90]]).
+                    addSize([768, 0], [[970,90],[728,90]]).   <!-- for WP side -->
+                    //addSize([768, 0], [[728,90]]).  <!-- for forum side -->
                     build();
-                googletag.defineSlot("/1103428/belowNav", [728,90],"ad-belowNav").defineSizeMapping(mapLeader).addService(googletag.pubads());
+                googletag.defineSlot("/1103428/belowNav", [1,1],"ad-belowNav").addService(googletag.pubads());
+                googletag.defineSlot("/1103428/header", [728,90],"ad-header").defineSizeMapping(mapLeader).addService(googletag.pubads());
+                <!-- forums pages with right rail only -->
 				googletag.defineSlot("/1103428/sbr1", [300,250],"ad-sbr1").defineSizeMapping(mapRect).addService(googletag.pubads());
                 googletag.defineSlot("/1103428/sbr2", [300,250],"ad-sbr2").defineSizeMapping(mapRect).addService(googletag.pubads());
                 googletag.defineSlot("/1103428/sbr3", [300,250],"ad-sbr3").defineSizeMapping(mapRect).addService(googletag.pubads());
-                googletag.defineSlot("/1103428/sbr4", [300,250],"ad-sbr4").defineSizeMapping(mapRect).addService(googletag.pubads());
-                googletag.defineSlot("/1103428/body1", [300,250],"ad-body1").defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot("/1103428/body2", [300,250],"ad-body2").defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot("/1103428/body3", [300,250],"ad-body3").defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot("/1103428/body4", [300,250],"ad-body4").defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot("/1103428/body5", [300,250],"ad-body5").defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot("/1103428/body6", [300,250],"ad-body6").defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot("/1103428/body7", [300,250],"ad-body7").defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot("/1103428/body8", [300,250],"ad-body8").defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot("/1103428/body9", [300,250],"ad-body9").defineSizeMapping(mapBody).addService(googletag.pubads());
-                googletag.defineSlot("/1103428/footer", [728,90],"ad-footer").defineSizeMapping(mapLeader).addService(googletag.pubads());
+                googletag.defineSlot("/1103428/sbr4", [300,250],"ad-sbr4").defineSizeMapping(mapRect).addService(googletag.pubads());   
+                <!-- end forums pages with right rail only -->
+                googletag.defineSlot("/1103428/body1", [728,90],"ad-body1").defineSizeMapping(mapBody).addService(googletag.pubads());
+                googletag.defineSlot("/1103428/body2", [728,90],"ad-body2").defineSizeMapping(mapBody).addService(googletag.pubads());
+                googletag.defineSlot("/1103428/body3", [728,90],"ad-body3").defineSizeMapping(mapBody).addService(googletag.pubads());
+                googletag.defineSlot("/1103428/body4", [728,90],"ad-body4").defineSizeMapping(mapBody).addService(googletag.pubads());
+                googletag.defineSlot("/1103428/body5", [728,90],"ad-body5").defineSizeMapping(mapBody).addService(googletag.pubads());
+                googletag.defineSlot("/1103428/footer", [728,90],"ad-footer").defineSizeMapping(mapBody).addService(googletag.pubads());
                 googletag.defineSlot("/1103428/pixel1", [1,1],"ad-pixel1").addService(googletag.pubads());
                 googletag.defineSlot("/1103428/pixel2", [1,1],"ad-pixel2").addService(googletag.pubads());
                 googletag.defineSlot("/1103428/skin", [[1800,1000],[1400,800]],"ad-skin").addService(googletag.pubads());
@@ -315,6 +322,13 @@
             <script type="text/javascript">
                 googletag.cmd.push(function() {
                     googletag.display("ad-belowNav");
+                });
+            </script>
+        </div>
+        <div id="ad-header">
+            <script type="text/javascript">
+                googletag.cmd.push(function() {
+                    googletag.display("ad-header");
                 });
             </script>
         </div>
@@ -378,34 +392,6 @@
             <script type="text/javascript">
                 googletag.cmd.push(function() {
                     googletag.display("ad-body5");
-                });
-            </script>
-        </div>
-        <div id="ad-body6">
-            <script type="text/javascript">
-                googletag.cmd.push(function() {
-                    googletag.display("ad-body6");
-                });
-            </script>
-        </div>
-        <div id="ad-body7">
-            <script type="text/javascript">
-                googletag.cmd.push(function() {
-                    googletag.display("ad-body7");
-                });
-            </script>
-        </div>
-        <div id="ad-body8">
-            <script type="text/javascript">
-                googletag.cmd.push(function() {
-                    googletag.display("ad-body8");
-                });
-            </script>
-        </div>
-        <div id="ad-body9">
-            <script type="text/javascript">
-                googletag.cmd.push(function() {
-                    googletag.display("ad-body9");
                 });
             </script>
         </div>
